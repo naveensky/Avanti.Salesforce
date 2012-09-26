@@ -10,6 +10,9 @@
                 <th>
                     Name of Student
                 </th>
+                <th>
+                    Roll Number
+                </th>
                 <th class="width-50 text-right">
                     Goals
                 </th>
@@ -26,13 +29,15 @@
             <?php foreach ($fellows as $fellow): ?>
             <tr>
                 <td><?php echo $fellow->name; ?></td>
+                <td>
+                    <?php echo $fellow->roll_number;?>
+                </td>
                 <td class="text-right">
                     <a target="_blank" target="_blank" href="<?php echo
                         "http://www.formstack.com/forms/?1263698-rWnaydsUyH&staff_avanti_pin=" .
                         get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Fill
                         Report</a>
                 </td>
-
                 <td class="text-right">
                     <a target="_blank"  href="<?php echo
                     "http://www.formstack.com/forms/?1258004-7GdhAtYPy4&staff_avanti_pin=" .

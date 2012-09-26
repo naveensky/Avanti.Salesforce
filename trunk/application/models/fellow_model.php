@@ -6,21 +6,51 @@
  * Time: 10:39 PM
  * To change this template use File | Settings | File Templates.
  */
-class Fellow_Model extends CI_Model {
+class Fellow_Model extends CI_Model
+{
 
     public $id;
     public $name;
     public $roll_number;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return "";
     }
 
-    public function get_fellows_for_mentor($mentor_user_id) {
+    /*
+     * this function will return all fellows of user_id
+     * @param user_id
+     */
+    function get_fellows($user_id)
+    {
+        $this->db->select('id');
+        $this->db->where('user_id', $user_id);
+        $mentor = $this->db->get('mentors')->row();
+        $mentor_id = 0;
+        if (empty($mentor))
+            return null;
+        else
+            $mentor_id = $mentor->id;
+        $query = $this->db->query("select get_mentor_mentors($mentor_id) as ids;");
+        $result = $query->row();
+        if (empty($result))
+            return null;
+
+        $id_array = explode(",", $result->ids);
+        $this->db->where_in('mentor_id', $id_array);
+        $fellows = $this->db->get('fellows')->result();
+        return $fellows;
+    }
+
+
+    public function get_fellows_for_mentor($mentor_user_id)
+    {
 
         $this->db->select("*");
         $this->db->from("fellows");
@@ -43,7 +73,8 @@ class Fellow_Model extends CI_Model {
         return $fellows;
     }
 
-    public function create_fellow($name, $roll_number, $mentor_id, $chapter_id) {
+    public function create_fellow($name, $roll_number, $mentor_id, $chapter_id)
+    {
         $data = array(
             'chapter_id' => $chapter_id,
             'mentor_id' => $mentor_id,
