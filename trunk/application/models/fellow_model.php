@@ -6,20 +6,17 @@
  * Time: 10:39 PM
  * To change this template use File | Settings | File Templates.
  */
-class Fellow_Model extends CI_Model
-{
+class Fellow_Model extends CI_Model {
 
     public $id;
     public $name;
     public $roll_number;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
-    public function __toString()
-    {
+    public function __toString() {
         return "";
     }
 
@@ -27,8 +24,7 @@ class Fellow_Model extends CI_Model
      * this function will return all fellows of user_id
      * @param user_id
      */
-    function get_fellows($user_id)
-    {
+    function get_fellows($user_id) {
         $this->db->select('id');
         $this->db->where('user_id', $user_id);
         $mentor = $this->db->get('mentors')->row();
@@ -45,19 +41,20 @@ class Fellow_Model extends CI_Model
         $id_array[] = $mentor_id;
 
         $this->db->where_in('mentor_id', $id_array);
+        $this->db->order_by('name');
         $fellows = $this->db->get('fellows')->result();
         return $fellows;
     }
 
 
-    public function get_fellows_for_mentor($mentor_user_id)
-    {
+    public function get_fellows_for_mentor($mentor_user_id) {
 
         $this->db->select("*");
         $this->db->from("fellows");
         $this->db->join("mentors", 'fellows.mentor_id = mentors.id');
         $this->db->join("users", "mentors.user_id = users.id");
         $this->db->where('users.id', $mentor_user_id);
+        $this->db->order_by('name');
         $query = $this->db->get();
         $results = $query->result();
 
@@ -74,8 +71,7 @@ class Fellow_Model extends CI_Model
         return $fellows;
     }
 
-    public function create_fellow($name, $roll_number, $mentor_id, $chapter_id)
-    {
+    public function create_fellow($name, $roll_number, $mentor_id, $chapter_id) {
         $data = array(
             'chapter_id' => $chapter_id,
             'mentor_id' => $mentor_id,
