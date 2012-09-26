@@ -39,10 +39,11 @@ class Fellow_Model extends CI_Model
             $mentor_id = $mentor->id;
         $query = $this->db->query("select get_mentor_mentors($mentor_id) as ids;");
         $result = $query->row();
-        if (empty($result))
-            return null;
+        $id_array = array();
+        if (!empty($result))
+            $id_array = explode(",", $result->ids);
+        $id_array[] = $mentor_id;
 
-        $id_array = explode(",", $result->ids);
         $this->db->where_in('mentor_id', $id_array);
         $fellows = $this->db->get('fellows')->result();
         return $fellows;

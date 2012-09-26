@@ -27,7 +27,10 @@ class Tests extends CI_Controller {
         $this->unit->run(empty($fellows_data), false,"Parse Fellows CSV");
 
     }
-
+     public function test_fellows(){
+         $ins=new Test_Model();
+         $ins->test_fellows("135,136,137,138,139,140,141");
+     }
     private function  Test_Fellow_Model() {
         $fellow_model = new Fellow_Model();
         $fellows = $fellow_model->get_fellows_for_mentor(3);
