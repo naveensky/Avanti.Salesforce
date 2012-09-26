@@ -1,0 +1,22 @@
+body {
+    font-family: "open sans", arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'open sans condensed bold', arial, sans-serif;
+}
+
+#main {
+    min-height: 500px;
+}
+
+.width-50 {
+    max-width: 50px;
+    min-width: 50px;
+}
+
+.text-right, .table th.text-right, .table td.text-right {
+    text-align: right;
+}
