@@ -1,5 +1,5 @@
 <h3 class="theme_font">Login</h3>
-<p class="theme_font">Please login with your email/username and password below.</p>
+<p>Please login with your email/username and password below.</p>
 
 <?php if (!empty($message)): ?>
 <div id="infoMessage" class="alert alert-error">

@@ -29,10 +29,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .main_menu{
     font-family: "Kulturista-Semi-Bold";
-    text-decoration: none;
     font-size: 20px;
 }
+.red_color {
+    color: #BE2326;
+}
+#footer a{
+    color: #BE2326;
+}
+.main_menu a:hover,.main_menu a:visited{
+    color: #BE2326;
 
-.main_menu a:hover{
+}
+a ,a:visited,a:hover{
     color: #BE2326;
 }
