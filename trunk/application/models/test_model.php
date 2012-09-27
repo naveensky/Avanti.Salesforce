@@ -8,13 +8,15 @@
  */
 class Test_Model extends CI_Model
 {
-    function test_fellows($str){
+    function test_fellows($str)
+    {
         $id_array = explode(",", $str);
         $this->db->where_in('mentor_id', $id_array);
         $fellows = $this->db->get('fellows')->result();
-        foreach($fellows as $fellow)
-            var_dump($fellow->name) ;
+        foreach ($fellows as $fellow)
+            var_dump($fellow->name);
     }
+
     function get_fellows($user_id)
     {
         $this->db->select('id');

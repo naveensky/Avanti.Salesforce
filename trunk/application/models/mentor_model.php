@@ -6,7 +6,8 @@
  * Time: 10:21 PM
  * To change this template use File | Settings | File Templates.
  */
-class Mentor_Model extends CI_Model {
+class Mentor_Model extends CI_Model
+{
 
     public $id;
     public $name;
@@ -14,56 +15,45 @@ class Mentor_Model extends CI_Model {
 
     public $fellows;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return "";
     }
 
-    public function load_data_from_csv($file_path) {
-        if (!file_exists($file_path))
-            return;
+    public function get_mentors_child($user_id)
+    {
+        $this->db->select('id');
+        $this->db->where('user_id', $user_id);
+        $mentor = $this->db->get('mentors')->row();
+        $mentor_id = 0;
+        if (empty($mentor))
+            return null;
+        else
+            $mentor_id = $mentor->id;
 
-        $data = read_file($file_path);
-        $lines = explode("\n", $data);
-        $ion_auth = new Ion_auth();
+        $query = $this->db->query("select get_mentor_mentors($mentor_id) as ids;");
+        $result = $query->row();
+        $id_array = array();
 
-        //remove header line
-        $lines = array_slice($lines, 1, sizeof($lines));
+        if (!empty($result)& !empty($result->ids))
+            $id_array = explode(",", $result->ids);
+        else
+            return null;
 
-        print_r($lines);
-
-        foreach ($lines as $data_line) {
-            $cells_data = explode(",", $data_line);
-
-            $mentor_email = $cells_data[3];
-            $mentor = get_user_by_email($mentor_email);
-
-            if (empty($mentor)) {
-                $ion_auth->register($mentor_email, 'asdf1234', $mentor_email);
-            }
-
-            $mentor = get_user_by_email($mentor_email);
-
-            //todo: check for duplicate fellows
-
-
-
-
-
-
-            //            $ion_auth->
-
-
-        }
-
-        return null;
+        $this->db->select('username');
+        $this->db->from('users');
+        $this->db->join('mentors', 'mentors.user_id = users.id');
+        $this->db->where_in('mentors.id',$id_array);
+        $user_names=$query = $this->db->get()->result();
+        return $user_names;
     }
 
-    public function add_mentor($name, $email, $chapter_id) {
-    }
+
 
 
 }

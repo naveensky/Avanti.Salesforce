@@ -20,3 +20,19 @@ h1, h2, h3, h4, h5, h6 {
 .text-right, .table th.text-right, .table td.text-right {
     text-align: right;
 }
+#men_fel_tab{
+    margin-top: 10px;
+}
+.theme_font{
+    font-family: "Kulturista-Semi-Bold";
+}
+
+.main_menu{
+    font-family: "Kulturista-Semi-Bold";
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.main_menu a:hover{
+    color: #BE2326;
+}

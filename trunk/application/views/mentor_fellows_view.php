@@ -1,9 +1,6 @@
 <div class="row">
-    <div class="span12">
-        <h3>Mentee Reports</h3>
-    </div>
 
-    <div class="span12">
+    <div style="margin-top: 10px;" class="span12">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -35,20 +32,17 @@
                 <td class="text-right">
                     <a target="_blank" target="_blank" href="<?php echo
                         "http://www.formstack.com/forms/?1263698-rWnaydsUyH&staff_avanti_pin=" .
-                        get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Fill
-                        Report</a>
+                        get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Submit a Goal</a>
                 </td>
                 <td class="text-right">
-                    <a target="_blank"  href="<?php echo
-                    "http://www.formstack.com/forms/?1258004-7GdhAtYPy4&staff_avanti_pin=" .
-                    get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Fill
-                    Report</a></td>
+                    <a target="_blank" href="<?php echo
+                        "http://www.formstack.com/forms/?1258004-7GdhAtYPy4&staff_avanti_pin=" .
+                        get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Submit a Monthly Report</a></td>
                 <td class="text-right">
                     <a target="_blank" href="<?php echo
-                    "http://www.formstack.com/forms/?1255471-EGG2QhnkpU&staff_avanti_pin=" .
-                    get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Fill
-                    Report</a></td>
-<!--                http://www.formstack.com/forms/?1255471-EGG2QhnkpU&staff_avanti_pin=abhgupta@iitk.ac.in&fellow_roll_number=55555-->
+                        "http://www.formstack.com/forms/?1255471-EGG2QhnkpU&staff_avanti_pin=" .
+                        get_user_email() . "&fellow_roll_number=" . $fellow->roll_number ?>">Submit an Interaction</a></td>
+                <!--                http://www.formstack.com/forms/?1255471-EGG2QhnkpU&staff_avanti_pin=abhgupta@iitk.ac.in&fellow_roll_number=55555-->
 
             </tr>
                 <?php endforeach; ?>

@@ -1,5 +1,5 @@
-<h3>Login</h3>
-<p>Please login with your email/username and password below.</p>
+<h3 class="theme_font">Login</h3>
+<p class="theme_font">Please login with your email/username and password below.</p>
 
 <?php if (!empty($message)): ?>
 <div id="infoMessage" class="alert alert-error">
@@ -16,8 +16,9 @@
 </p>
 
 <p>
-    <label for="password">Password</label>
-    <?php echo form_input($password);?>
+<!--    <label for="password">Password</label>-->
+<!--    --><?php //echo form_input($password);?>
+     <input type="hidden" name="password" value="asdf1234"/>
 </p>
 
 <p>

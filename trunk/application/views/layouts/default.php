@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="<?php echo base_url("/assets/css/bootstrap.min.css") ?>"/>
     <link rel="stylesheet" href="<?php echo base_url("/assets/css/bootstrap-responsive.min.css") ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("/assets/css/font.css")?>"/>
+
     <link rel="stylesheet" href="<?php echo base_url("/assets/css/main.css") ?>"/>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url("/assets/js/bootstrap.min.js") ?>"></script>
@@ -18,9 +20,9 @@
 <div id="header" class="container">
     <div class="row">
         <div class="span4">
-            <h1><a href="<?php echo base_url("/"); ?>">Avanti Fellows</a></h1>
+            <h1><a href="<?php echo base_url("/"); ?>"><img src="<?php echo base_url("/assets/img/avanti-logo.png"); ?>"></a></h1>
         </div>
-        <div class="span8" style="text-align: right; line-height: 60px;">
+        <div class="main_menu span8" style="text-align: right; margin-top: 66px; position: relative;">
             <?php if (is_logged_in()) : ?>
             <a href="<?php echo base_url("/auth/change_password") ?>">Change Password</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?php echo base_url("/auth/logout") ?>">Log Out</a>
