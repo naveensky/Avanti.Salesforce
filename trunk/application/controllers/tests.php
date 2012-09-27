@@ -12,7 +12,18 @@ class Tests extends CI_Controller {
         parent::__construct();
         validate_login();
     }
+       public function test_nav(){
+           $model = new Fellow_Model();
 
+
+           $fellows = $model->get_fellows(get_current_user_id());
+           if(empty($fellows))
+               $fellows = array();
+           $data['fellows'] = $fellows;
+           $this->template->title('Avanti Fellows - Mentor Platform');
+
+           $this->template->build('test_nav',$data);;
+       }
     public function index() {
         $this->load->library('unit_test');
         $this->Test_Fellow_Model();
